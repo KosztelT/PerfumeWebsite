@@ -1,0 +1,1 @@
+insert into brand (id, name, date_of_founded) values ('cf1ea181-7c7c-43a0-a19b-cf615ce53522', 'Tom Ford', '1999-06-10');
