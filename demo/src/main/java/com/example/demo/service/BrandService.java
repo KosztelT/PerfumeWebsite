@@ -16,15 +16,15 @@ public class BrandService {
     private List<Brand> brands = List.of(
             Brand.builder()
                     .name("Brand1")
-                    .founded(LocalDate.of(1965, 10, 10))
+                    .dateOfFounded(LocalDate.of(1965, 10, 10))
                     .build(),
             Brand.builder()
                     .name("Brand2")
-                    .founded(LocalDate.of(1977, 5, 5))
+                    .dateOfFounded(LocalDate.of(1977, 5, 5))
                     .build(),
             Brand.builder()
                     .name("Brand3")
-                    .founded(LocalDate.of(1975, 1, 1))
+                    .dateOfFounded(LocalDate.of(1975, 1, 1))
                     .build()
     );
 }
