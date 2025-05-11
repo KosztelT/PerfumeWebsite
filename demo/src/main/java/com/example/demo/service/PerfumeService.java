@@ -5,48 +5,43 @@ import com.example.demo.domain.Perfume;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
+import com.example.demo.exception.NoSuchEntityException;
+import com.example.demo.repository.PerfumeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 @Service
 public class PerfumeService {
 
+    @Autowired
+    private PerfumeRepository perfumeRepository;
+
     public List<Perfume> getAllPerfumes(){
-        return perfumes;
+        return perfumeRepository.findAll();
     }
 
-    private List<Perfume> perfumes = List.of(
-            Perfume.builder()
-                    .title("title1")
-                    .releaseDate(LocalDate.of(2003, 4, 10))
-                    .brand(
-                            Brand.builder()
-                                    .name("Brand1")
-                                    .dateOfFounded(LocalDate.of(1965, 10, 10))
-                                    .build()
-                    )
-                    .build(),
-            Perfume.builder()
-                    .title("title2")
-                    .releaseDate(LocalDate.of(2005, 2, 4))
-                    .brand(
-                            Brand.builder()
-                                    .name("Brand2")
-                                    .dateOfFounded(LocalDate.of(1977, 5, 5))
-                                    .build()
-                    )
-                    .build(),
-            Perfume.builder()
-                    .title("title3")
-                    .releaseDate(LocalDate.of(1999, 3, 10))
-                    .brand(
-                            Brand.builder()
-                                    .name("Brand3")
-                                    .dateOfFounded(LocalDate.of(1975, 1, 1))
-                                    .build()
-                    )
-                    .build()
-    );
+    public void save(Perfume perfume) {
+        perfumeRepository.save(perfume);
+    }
 
+    public void edit(Perfume perfume) {
+        perfumeRepository.save(perfume);
+    }
+
+    public Perfume findById(UUID id) {
+        Optional<Perfume> optionalPerfume = perfumeRepository.findById(id);
+        if (optionalPerfume.isPresent()) {
+            return optionalPerfume.get();
+        } else {
+            throw new NoSuchEntityException("There was no perfume with an identifier");
+        }
+    }
+
+    public void deleteById(UUID id) {
+        perfumeRepository.deleteById(id);
+    }
 }
