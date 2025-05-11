@@ -19,7 +19,7 @@ public class PerfumeService {
     private List<Perfume> perfumes = List.of(
             Perfume.builder()
                     .title("title1")
-                    .releaseDate(LocalDate.of(2003, 04, 10))
+                    .releaseDate(LocalDate.of(2003, 4, 10))
                     .brand(
                             Brand.builder()
                                     .name("Brand1")
@@ -29,21 +29,21 @@ public class PerfumeService {
                     .build(),
             Perfume.builder()
                     .title("title2")
-                    .releaseDate(LocalDate.of(2005, 02, 04))
+                    .releaseDate(LocalDate.of(2005, 2, 4))
                     .brand(
                             Brand.builder()
                                     .name("Brand2")
-                                    .founded(LocalDate.of(1977, 05, 05))
+                                    .founded(LocalDate.of(1977, 5, 5))
                                     .build()
                     )
                     .build(),
             Perfume.builder()
                     .title("title3")
-                    .releaseDate(LocalDate.of(1999, 03, 10))
+                    .releaseDate(LocalDate.of(1999, 3, 10))
                     .brand(
                             Brand.builder()
                                     .name("Brand3")
-                                    .founded(LocalDate.of(1975, 01, 01))
+                                    .founded(LocalDate.of(1975, 1, 1))
                                     .build()
                     )
                     .build()
