@@ -3,28 +3,41 @@ package com.example.demo.service;
 import com.example.demo.domain.Brand;
 
 import java.time.LocalDate;
-import java.util.List;
+import java.util.*;
+
+import com.example.demo.exception.NoSuchEntityException;
+import com.example.demo.repository.BrandRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BrandService {
 
-    public List<Brand> getAllBrands() {
-        return brands;
+    @Autowired
+    private BrandRepository brandRepository;
+
+    public List<Brand> getAllBrands(){
+        return brandRepository.findAll();
     }
 
-    private List<Brand> brands = List.of(
-            Brand.builder()
-                    .name("Brand1")
-                    .dateOfFounded(LocalDate.of(1965, 10, 10))
-                    .build(),
-            Brand.builder()
-                    .name("Brand2")
-                    .dateOfFounded(LocalDate.of(1977, 5, 5))
-                    .build(),
-            Brand.builder()
-                    .name("Brand3")
-                    .dateOfFounded(LocalDate.of(1975, 1, 1))
-                    .build()
-    );
+   public void save(Brand brand) {
+        brandRepository.save(brand);
+   }
+
+   public void edit(Brand brand) {
+    brandRepository.save(brand);
+   }
+
+   public Brand findById(UUID id){
+       Optional<Brand> optionalBrand = brandRepository.findById(id);
+       if(optionalBrand.isPresent()){
+           return optionalBrand.get();
+       } else {
+           throw new NoSuchEntityException("There was no brand with an identifier: " + id);
+       }
+   }
+
+   public void deleteById(UUID id) {
+        brandRepository.deleteById(id);
+   }
 }
