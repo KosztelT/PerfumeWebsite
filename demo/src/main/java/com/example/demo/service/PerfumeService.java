@@ -1,9 +1,7 @@
 package com.example.demo.service;
 
-import com.example.demo.domain.Brand;
 import com.example.demo.domain.Perfume;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -11,7 +9,6 @@ import java.util.UUID;
 import com.example.demo.exception.NoSuchEntityException;
 import com.example.demo.repository.PerfumeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -20,7 +17,7 @@ public class PerfumeService {
     @Autowired
     private PerfumeRepository perfumeRepository;
 
-    public List<Perfume> getAllPerfumes(){
+    public List<Perfume> getAllPerfumes() {
         return perfumeRepository.findAll();
     }
 
@@ -37,7 +34,9 @@ public class PerfumeService {
         if (optionalPerfume.isPresent()) {
             return optionalPerfume.get();
         } else {
-            throw new NoSuchEntityException("There was no perfume with an identifier");
+            throw new NoSuchEntityException(
+                    "There was no perfume with an identifier"
+            );
         }
     }
 

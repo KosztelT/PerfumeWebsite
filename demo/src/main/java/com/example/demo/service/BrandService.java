@@ -2,8 +2,9 @@ package com.example.demo.service;
 
 import com.example.demo.domain.Brand;
 
-import java.time.LocalDate;
-import java.util.*;
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 import com.example.demo.exception.NoSuchEntityException;
 import com.example.demo.repository.BrandRepository;
@@ -16,7 +17,7 @@ public class BrandService {
     @Autowired
     private BrandRepository brandRepository;
 
-    public List<Brand> getAllBrands(){
+    public List<Brand> getAllBrands() {
         return brandRepository.findAll();
     }
 
@@ -28,12 +29,14 @@ public class BrandService {
         return brandRepository.save(brand);
    }
 
-   public Brand findById(UUID id){
+   public Brand findById(UUID id) {
        Optional<Brand> optionalBrand = brandRepository.findById(id);
-       if(optionalBrand.isPresent()){
+       if (optionalBrand.isPresent()) {
            return optionalBrand.get();
        } else {
-           throw new NoSuchEntityException("There was no brand with an identifier: " + id);
+           throw new NoSuchEntityException(
+                   "There was no brand with an identifier: " + id
+           );
        }
    }
 

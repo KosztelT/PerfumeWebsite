@@ -1,11 +1,16 @@
 package com.example.demo.domain;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.aspectj.util.FuzzyBoolean;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -24,6 +29,8 @@ public class Brand {
     private String name;
     @Column(name = "date_of_founded")
     private LocalDate dateOfFounded;
-    @OneToMany(mappedBy = "brand", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "brand",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
     private List<Perfume> perfumes;
 }
