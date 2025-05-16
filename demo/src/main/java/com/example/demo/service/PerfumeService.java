@@ -24,12 +24,12 @@ public class PerfumeService {
         return perfumeRepository.findAll();
     }
 
-    public void save(Perfume perfume) {
-        perfumeRepository.save(perfume);
+    public Perfume save(Perfume perfume) {
+        return perfumeRepository.save(perfume);
     }
 
-    public void edit(Perfume perfume) {
-        perfumeRepository.save(perfume);
+    public Perfume edit(Perfume perfume) {
+        return perfumeRepository.save(perfume);
     }
 
     public Perfume findById(UUID id) {

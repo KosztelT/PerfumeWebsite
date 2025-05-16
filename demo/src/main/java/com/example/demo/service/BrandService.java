@@ -20,12 +20,12 @@ public class BrandService {
         return brandRepository.findAll();
     }
 
-   public void save(Brand brand) {
-        brandRepository.save(brand);
+   public Brand save(Brand brand) {
+        return brandRepository.save(brand);
    }
 
-   public void edit(Brand brand) {
-    brandRepository.save(brand);
+   public Brand edit(Brand brand) {
+        return brandRepository.save(brand);
    }
 
    public Brand findById(UUID id){
