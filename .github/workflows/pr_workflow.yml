@@ -22,7 +22,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build
-        run: mvn compile
+        run: mvn build
 
       - name: Test
         run: mvn test
