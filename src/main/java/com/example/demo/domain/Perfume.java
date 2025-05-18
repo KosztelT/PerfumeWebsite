@@ -35,6 +35,7 @@ public class Perfume {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id", nullable = false)
+    // @JsonBackReference végtelen ciklus miatt
     private Brand brand;
 
 }
